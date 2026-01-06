@@ -1,0 +1,234 @@
+{
+  "ProjectName": "Computer",
+  "DLSVersion_LastSaved": "2.1.6",
+  "DLSVersion_EarliestCompatible": "2.0.0",
+  "CreationTime": "2025-12-11T16:58:20.629+02:00",
+  "LastSaveTime": "2026-01-06T14:01:39.307+02:00",
+  "Prefs_MainPinNamesDisplayMode": 0,
+  "Prefs_ChipPinNamesDisplayMode": 2,
+  "Prefs_GridDisplayMode": 1,
+  "Prefs_Snapping": 1,
+  "Prefs_StraightWires": 0,
+  "Prefs_SimPaused": false,
+  "Prefs_SimTargetStepsPerSecond": 1000,
+  "Prefs_SimStepsPerClockTick": 150,
+  "AllCustomChipNames":[
+    "NOT",
+    "AND",
+    "OR",
+    "XOR",
+    "BUF",
+    "4-1 AND",
+    "4-1  OR",
+    "4-4 BUFFER",
+    "8-8 BUFFER",
+    "8-8 XOR",
+    "2-1 MUX",
+    "2-4 DECODER",
+    "3-8 DECODER",
+    "3-1 AND",
+    "1-4 DEMUX",
+    "4-1 MUX",
+    "-",
+    "4-2 ENCODER",
+    "1-2 DEMUX",
+    "8-3 ENCODER",
+    "1-8 DEMUX",
+    "8-1 MUX",
+    "NOR",
+    "SR LATCH",
+    "D LATCH",
+    "JK LATCH",
+    "FE-FLIP-FLOP",
+    "2x8 MUX",
+    "8-BIT REGISTER async",
+    "COUNTER WTFF",
+    "Delay BUFFER",
+    "1-BIT MEM",
+    "16-BIT MEM",
+    "RE-FLIP-FLOP",
+    "256-BIT MEM",
+    "256x8-BIT RAM async",
+    "16x8-BIT RAM gated",
+    "LABEL",
+    "8-BIT EQUAL",
+    "XNOR",
+    "8-BIT GREATER",
+    "1-BIT COMPARATOR",
+    "4-BIT COMPARATOR",
+    "8-BIT COMPARATOR",
+    "Full Adder",
+    "4-BIT ADDER",
+    "8-BIT ADDER",
+    "FE-FLIP-FLOP reset",
+    "8-BIT COUNTER insta",
+    "RANGE-COUNTER flip",
+    "CPU CORE",
+    "1-BIT REGISTER",
+    "8-BIT REGISTER",
+    "32-BIT MEM",
+    "32x12-BIT RAM async",
+    "32x12-BIT RAM",
+    "4-BIT REGISTER",
+    "ALU",
+    "4-16 DECODER",
+    "16-4 ENCODER",
+    "2x8 AND",
+    "2x8 XOR",
+    "2x8  OR",
+    "8-BIT SHIFT",
+    "8-BIT ADD-SUB",
+    "3-1  OR",
+    "INCREMENT REGISTER",
+    "8-BIT COUNTER",
+    "2-BIT COUNTER",
+    "4-RING COUNTER",
+    "2x4 MUX",
+    "8x2 DEMUX",
+    "4x2 DEMUX",
+    "8-RING COUNTER"
+  ],
+  "StarredList":[
+    {
+      "Name":"BASIC",
+      "IsCollection":true
+    },
+    {
+      "Name":"EXTENDED",
+      "IsCollection":true
+    },
+    {
+      "Name":"MULTIPLEXERS",
+      "IsCollection":true
+    },
+    {
+      "Name":"LATCHES",
+      "IsCollection":true
+    },
+    {
+      "Name":"IN/OUT",
+      "IsCollection":true
+    },
+    {
+      "Name":"MERGE/SPLIT",
+      "IsCollection":true
+    },
+    {
+      "Name":"MEMORY",
+      "IsCollection":true
+    },
+    {
+      "Name":"NOT",
+      "IsCollection":false
+    },
+    {
+      "Name":"AND",
+      "IsCollection":false
+    },
+    {
+      "Name":"OR",
+      "IsCollection":false
+    },
+    {
+      "Name":"-",
+      "IsCollection":false
+    },
+    {
+      "Name":"ADDER",
+      "IsCollection":true
+    },
+    {
+      "Name":"COMPARATOR",
+      "IsCollection":true
+    },
+    {
+      "Name":"COUNTER",
+      "IsCollection":true
+    },
+    {
+      "Name":"ALU",
+      "IsCollection":false
+    },
+    {
+      "Name":"CPU CORE",
+      "IsCollection":false
+    }
+  ],
+  "ChipCollections":[
+    {
+      "Chips":["NAND","CLOCK","PULSE","KEY","3-STATE BUFFER","NOT","AND","OR","NOR","XOR","XNOR","BUF"],
+      "IsToggledOpen":false,
+      "Name":"BASIC"
+    },
+    {
+      "Chips":["3-1 AND","4-1 AND","2x8 AND","3-1  OR","4-1  OR","2x8  OR","8-8 XOR","2x8 XOR","4-4 BUFFER","8-8 BUFFER","Delay BUFFER","LABEL"],
+      "IsToggledOpen":false,
+      "Name":"EXTENDED"
+    },
+    {
+      "Chips":["2-1 MUX","2x4 MUX","2x8 MUX","4-1 MUX","8-1 MUX","1-2 DEMUX","4x2 DEMUX","8x2 DEMUX","1-4 DEMUX","1-8 DEMUX","4-2 ENCODER","8-3 ENCODER","16-4 ENCODER","2-4 DECODER","3-8 DECODER","4-16 DECODER"],
+      "IsToggledOpen":false,
+      "Name":"MULTIPLEXERS"
+    },
+    {
+      "Chips":["SR LATCH","D LATCH","JK LATCH","FE-FLIP-FLOP","RE-FLIP-FLOP","FE-FLIP-FLOP reset"],
+      "IsToggledOpen":false,
+      "Name":"LATCHES"
+    },
+    {
+      "Chips":["IN-1","IN-4","IN-8","OUT-1","OUT-4","OUT-8"],
+      "IsToggledOpen":false,
+      "Name":"IN/OUT"
+    },
+    {
+      "Chips":["1-4BIT","1-8BIT","4-8BIT","4-1BIT","8-4BIT","8-1BIT"],
+      "IsToggledOpen":false,
+      "Name":"MERGE/SPLIT"
+    },
+    {
+      "Chips":["BUS-1","BUS-4","BUS-8"],
+      "IsToggledOpen":false,
+      "Name":"BUS"
+    },
+    {
+      "Chips":["7-SEGMENT","DOT DISPLAY","RGB DISPLAY","LED"],
+      "IsToggledOpen":false,
+      "Name":"DISPLAY"
+    },
+    {
+      "Chips":["ROM 256×16","8-BIT REGISTER async","1-BIT REGISTER","4-BIT REGISTER","8-BIT REGISTER","1-BIT MEM","16-BIT MEM","32-BIT MEM","256-BIT MEM","16x8-BIT RAM gated","32x12-BIT RAM async","256x8-BIT RAM async","32x12-BIT RAM"],
+      "IsToggledOpen":false,
+      "Name":"MEMORY"
+    },
+    {
+      "Chips":["Full Adder","4-BIT ADDER","8-BIT ADDER","8-BIT ADD-SUB"],
+      "IsToggledOpen":false,
+      "Name":"ADDER"
+    },
+    {
+      "Chips":["1-BIT COMPARATOR","4-BIT COMPARATOR","8-BIT COMPARATOR","8-BIT EQUAL","8-BIT GREATER"],
+      "IsToggledOpen":false,
+      "Name":"COMPARATOR"
+    },
+    {
+      "Chips":["INCREMENT REGISTER","2-BIT COUNTER","8-BIT COUNTER","8-BIT COUNTER insta","RANGE-COUNTER flip","4-RING COUNTER","8-RING COUNTER"],
+      "IsToggledOpen":false,
+      "Name":"COUNTER"
+    },
+    {
+      "Chips":["8-BIT SHIFT"],
+      "IsToggledOpen":false,
+      "Name":"MULTIPLIER"
+    },
+    {
+      "Chips":["BUTTON","DIPSWITCH","CONST","DETECTOR","RAM-8","EEPROM 256×16","SPS","RTC"],
+      "IsToggledOpen":false,
+      "Name":"Community Edition"
+    },
+    {
+      "Chips":["BUZZER","-","COUNTER WTFF","CPU CORE","ALU"],
+      "IsToggledOpen":true,
+      "Name":"OTHER"
+    }
+  ]
+}
