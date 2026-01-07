@@ -21,6 +21,7 @@
 - ?remove demuxes
 - ROM loading routine / ROM_RAM
 - update -
+- write proper script
 ---
 ---
 
@@ -51,7 +52,7 @@
 | [JEQ](#5-jeq) | 5 | Jump if E FLAG |
 | [JGT](#6-jgt) | 6 | Jump if G FLAG |
 | [CMP](#7-cmp) | 7 | Set FLAG |
-| [ADD](#8-sta) | 8 | Add  ACC += RAM |
+| [ADD](#8-add) | 8 | Add  ACC += RAM |
 | [ADI](#9-adi) | 9 | Add ACC += Immediate |
 | [SUB](#10-sub) | 10 | Add ACC -= RAM |
 | [SBI](#11-sbi) | 11 | Add ACC -= Immediate |
