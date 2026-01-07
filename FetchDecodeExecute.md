@@ -288,13 +288,13 @@ MAR *-> |     | \3-> MDR
 ```
 10 tick cycle:
 4 - FETCH:
-    store MAR<-PC, PC-CIR
-    pulse MAR, pulse PC
+    store MAR<-PC, CIR-PC
+    pulse MAR, pulse PC 
     store CIR<-RAM, !CIR/MDR
     pulse CIR
 4/2 - DECODE:
     1,7,8,10,12,13,14,15:
-        store MAR<-CIR, !PC-CIR, !MAR/MDR
+        store MAR<-CIR, !CIR-PC, !MAR/MDR
         pulse MAR
         store MDR<-RAM, CIR/MDR, CIR-RAM
         pulse MDR
@@ -302,7 +302,7 @@ MAR *-> |     | \3-> MDR
         store MDR<-CIR, MAR/MDR, !CIR-RAM
         pulse MDR
     3:
-        store MAR<-CIR, !PC-CIR, !MAR/MDR
+        store MAR<-CIR, !CIR-PC, !MAR/MDR
         pulse MAR
 2 - EXECUTE:
     store x<-ALU
@@ -317,6 +317,5 @@ pulse MAR
 store MDR
 pulse MDR
 
-store EXECUTE
 pulse EXECUTE
 ```
