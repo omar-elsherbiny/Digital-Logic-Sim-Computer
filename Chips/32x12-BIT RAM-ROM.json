@@ -1,6 +1,6 @@
 {
   "DLSVersion": "2.1.6",
-  "Name": "32x12-BIT RAM",
+  "Name": "32x12-BIT RAM-ROM",
   "NameLocation": 0,
   "ChipType": 0,
   "Size": {
@@ -8,9 +8,9 @@
     "y": 1.875
   },
   "Colour": {
-    "r": 0.423529446,
-    "g": 0.419607878,
-    "b": 1.0,
+    "r": 0.3019608,
+    "g": 0.498039246,
+    "b": 0.482352972,
     "a": 1
   },
   "InputPins":[

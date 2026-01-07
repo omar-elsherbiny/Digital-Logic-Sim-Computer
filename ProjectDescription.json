@@ -3,7 +3,7 @@
   "DLSVersion_LastSaved": "2.1.6",
   "DLSVersion_EarliestCompatible": "2.0.0",
   "CreationTime": "2025-12-11T16:58:20.629+02:00",
-  "LastSaveTime": "2026-01-07T14:20:06.171+02:00",
+  "LastSaveTime": "2026-01-07T15:32:32.720+02:00",
   "Prefs_MainPinNamesDisplayMode": 0,
   "Prefs_ChipPinNamesDisplayMode": 2,
   "Prefs_GridDisplayMode": 1,
@@ -68,7 +68,7 @@
     "8-BIT REGISTER",
     "32-BIT MEM",
     "32x12-BIT RAM async",
-    "32x12-BIT RAM",
+    "32x12-BIT RAM-ROM",
     "4-BIT REGISTER",
     "ALU",
     "4-16 DECODER",
@@ -89,7 +89,8 @@
     "8-RING COUNTER",
     "8-BIT SHIFT",
     "16-RING COUNTER",
-    "Opcode Decoder"
+    "Opcode Decoder",
+    "32x12-BIT RAM"
   ],
   "StarredList":[
     {
@@ -200,7 +201,7 @@
     },
     {
       "Chips":["ROM 256×16","8-BIT REGISTER async","1-BIT REGISTER","4-BIT REGISTER","8-BIT REGISTER","1-BIT MEM","16-BIT MEM","32-BIT MEM","256-BIT MEM","16x8-BIT RAM gated","32x12-BIT RAM async","256x8-BIT RAM async","32x12-BIT RAM"],
-      "IsToggledOpen":false,
+      "IsToggledOpen":true,
       "Name":"MEMORY"
     },
     {
@@ -224,12 +225,17 @@
       "Name":"MULTIPLIER"
     },
     {
+      "Chips":["32x12-BIT RAM-ROM","ALU","Opcode Decoder","CPU CORE"],
+      "IsToggledOpen":true,
+      "Name":"Main Parts"
+    },
+    {
       "Chips":["BUTTON","DIPSWITCH","CONST","DETECTOR","RAM-8","EEPROM 256×16","SPS","RTC"],
       "IsToggledOpen":false,
       "Name":"Community Edition"
     },
     {
-      "Chips":["BUZZER","-","COUNTER WTFF","CPU CORE","ALU","Opcode Decoder"],
+      "Chips":["BUZZER","-","COUNTER WTFF"],
       "IsToggledOpen":true,
       "Name":"OTHER"
     }

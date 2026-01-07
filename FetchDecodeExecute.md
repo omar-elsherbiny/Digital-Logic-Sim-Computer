@@ -16,13 +16,10 @@
 - ~~edit ALU (return all registers + enables)~~
 - ~~fix comparator~~
 - ~~16 ring counter~~
-
-- remove demuxes
-- put buses
-
-- ROM loading routine
+- ~~put buses~~
 - ~~SHT negative~~
-
+- ?remove demuxes
+- ROM loading routine / ROM_RAM
 - update -
 ---
 ---
