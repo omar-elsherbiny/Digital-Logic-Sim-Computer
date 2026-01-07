@@ -2,8 +2,9 @@
   "ProjectName": "Computer",
   "DLSVersion_LastSaved": "2.1.6",
   "DLSVersion_EarliestCompatible": "2.0.0",
+  "DLSVersion_LastSavedModdedVersion": "1.1.2",
   "CreationTime": "2025-12-11T16:58:20.629+02:00",
-  "LastSaveTime": "2026-01-07T17:08:47.662+02:00",
+  "LastSaveTime": "2026-01-07T18:34:03.195+02:00",
   "Prefs_MainPinNamesDisplayMode": 0,
   "Prefs_ChipPinNamesDisplayMode": 2,
   "Prefs_GridDisplayMode": 1,
@@ -11,7 +12,12 @@
   "Prefs_StraightWires": 0,
   "Prefs_SimPaused": false,
   "Prefs_SimTargetStepsPerSecond": 1000,
-  "Prefs_SimStepsPerClockTick": 250,
+  "Prefs_SimStepsPerClockTick": 50,
+  "Perfs_PinIndicators": 0,
+  "StepsRanSinceCreated": 905760,
+  "TimeSpentSinceCreated": {
+    "StartFrom": "00:19:10.3783929"
+  },
   "AllCustomChipNames":[
     "NOT",
     "AND",
@@ -234,6 +240,25 @@
       "Chips":["BUZZER","-","COUNTER WTFF"],
       "IsToggledOpen":true,
       "Name":"OTHER"
+    }
+  ],
+  "pinBitCounts":[
+    "1",
+    "4",
+    "8"
+  ],
+  "SplitMergePairs":[
+    {
+      "Key":"8",
+      "Value":"4"
+    },
+    {
+      "Key":"8",
+      "Value":"1"
+    },
+    {
+      "Key":"4",
+      "Value":"1"
     }
   ]
 }

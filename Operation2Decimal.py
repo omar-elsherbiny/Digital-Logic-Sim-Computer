@@ -54,7 +54,7 @@ while True:
     else:
         for addr, instr in enumerate(program):
             op, opd = decode(instr)
-            print(f"{addr:02}: {OPS.get(op, '???')} {opd}   ({instr})")
+            print(f"{addr:02}: {OPS.get(op, '???')} {opd:<3}   ({instr})")
 
     print("\n=== ADD INSTRUCTION ===")
     for k in sorted(OPS):
@@ -74,7 +74,7 @@ while True:
         continue
 
     try:
-        operand = int(input("operand (0–255)> "))
+        operand = int(input("operand (0-255)> "))
         if not (0 <= operand <= 255):
             raise ValueError
     except ValueError:
