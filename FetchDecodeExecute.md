@@ -17,6 +17,9 @@
 - ~~fix comparator~~
 - ~~16 ring counter~~
 
+- remove demuxes
+- put buses
+
 - ROM loading routine
 - ~~SHT negative~~
 
@@ -307,3 +310,10 @@ MAR *-> |     | \3-> MDR
     store x<-ALU
     pulse x
 ```
+
+### Buses
+MAR store
+pulse MAR
+
+MDR store
+pulse MDR

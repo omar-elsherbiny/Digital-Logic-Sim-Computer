@@ -3,7 +3,7 @@
   "DLSVersion_LastSaved": "2.1.6",
   "DLSVersion_EarliestCompatible": "2.0.0",
   "CreationTime": "2025-12-11T16:58:20.629+02:00",
-  "LastSaveTime": "2026-01-07T04:36:22.760+02:00",
+  "LastSaveTime": "2026-01-07T13:38:46.718+02:00",
   "Prefs_MainPinNamesDisplayMode": 0,
   "Prefs_ChipPinNamesDisplayMode": 2,
   "Prefs_GridDisplayMode": 1,
@@ -88,7 +88,8 @@
     "4x2 DEMUX",
     "8-RING COUNTER",
     "8-BIT SHIFT",
-    "16-RING COUNTER"
+    "16-RING COUNTER",
+    "Opcode Decoder"
   ],
   "StarredList":[
     {
@@ -194,7 +195,7 @@
     },
     {
       "Chips":["7-SEGMENT","DOT DISPLAY","RGB DISPLAY","LED"],
-      "IsToggledOpen":true,
+      "IsToggledOpen":false,
       "Name":"DISPLAY"
     },
     {
@@ -228,7 +229,7 @@
       "Name":"Community Edition"
     },
     {
-      "Chips":["BUZZER","-","COUNTER WTFF","CPU CORE","ALU"],
+      "Chips":["BUZZER","-","COUNTER WTFF","CPU CORE","ALU","Opcode Decoder"],
       "IsToggledOpen":true,
       "Name":"OTHER"
     }
