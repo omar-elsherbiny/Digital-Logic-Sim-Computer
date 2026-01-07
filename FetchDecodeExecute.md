@@ -18,11 +18,11 @@
 - ~~16 ring counter~~
 - ~~put buses~~
 - ~~SHT negative~~
-- ?remove demuxes
+- ~~write proper script~~
 - ROM loading routine / ROM_RAM
 - update -
-- write proper script
 - organise core
+- ?remove demuxes
 ---
 ---
 
