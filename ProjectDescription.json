@@ -3,7 +3,7 @@
   "DLSVersion_LastSaved": "2.1.6",
   "DLSVersion_EarliestCompatible": "2.0.0",
   "CreationTime": "2025-12-11T16:58:20.629+02:00",
-  "LastSaveTime": "2026-01-07T16:46:03.425+02:00",
+  "LastSaveTime": "2026-01-07T17:08:47.662+02:00",
   "Prefs_MainPinNamesDisplayMode": 0,
   "Prefs_ChipPinNamesDisplayMode": 2,
   "Prefs_GridDisplayMode": 1,
@@ -197,7 +197,7 @@
     },
     {
       "Chips":["ROM 256×16","8-BIT REGISTER async","1-BIT REGISTER","4-BIT REGISTER","8-BIT REGISTER","1-BIT MEM","16-BIT MEM","32-BIT MEM","256-BIT MEM","16x8-BIT RAM gated","32x12-BIT RAM async","256x8-BIT RAM async","32x12-BIT RAM"],
-      "IsToggledOpen":true,
+      "IsToggledOpen":false,
       "Name":"MEMORY"
     },
     {

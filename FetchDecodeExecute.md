@@ -20,6 +20,7 @@
 - ~~SHT negative~~
 - ~~write proper script~~
 - ROM loading routine / ROM_RAM
+- update doc
 - update -
 - organise core
 - ?remove demuxes
