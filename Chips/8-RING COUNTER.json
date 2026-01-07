@@ -39,7 +39,7 @@
   ],
   "OutputPins":[
     {
-      "Name":"OUT 3",
+      "Name":"OUT 7",
       "ID":2052635914,
       "Position":{
         "x":17.125,
@@ -50,7 +50,7 @@
       "ValueDisplayMode":0
     },
     {
-      "Name":"OUT 2",
+      "Name":"OUT 6",
       "ID":804683951,
       "Position":{
         "x":17.125,
@@ -61,7 +61,7 @@
       "ValueDisplayMode":0
     },
     {
-      "Name":"OUT 1",
+      "Name":"OUT 5",
       "ID":26154506,
       "Position":{
         "x":17.125,
@@ -72,7 +72,7 @@
       "ValueDisplayMode":0
     },
     {
-      "Name":"OUT 0",
+      "Name":"OUT 4",
       "ID":326256068,
       "Position":{
         "x":17.125,

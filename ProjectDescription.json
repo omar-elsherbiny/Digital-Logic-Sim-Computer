@@ -3,7 +3,7 @@
   "DLSVersion_LastSaved": "2.1.6",
   "DLSVersion_EarliestCompatible": "2.0.0",
   "CreationTime": "2025-12-11T16:58:20.629+02:00",
-  "LastSaveTime": "2026-01-07T02:37:45.665+02:00",
+  "LastSaveTime": "2026-01-07T03:46:15.359+02:00",
   "Prefs_MainPinNamesDisplayMode": 0,
   "Prefs_ChipPinNamesDisplayMode": 2,
   "Prefs_GridDisplayMode": 1,
@@ -87,7 +87,8 @@
     "8x2 DEMUX",
     "4x2 DEMUX",
     "8-RING COUNTER",
-    "8-BIT SHIFT"
+    "8-BIT SHIFT",
+    "16-RING COUNTER"
   ],
   "StarredList":[
     {
@@ -193,7 +194,7 @@
     },
     {
       "Chips":["7-SEGMENT","DOT DISPLAY","RGB DISPLAY","LED"],
-      "IsToggledOpen":false,
+      "IsToggledOpen":true,
       "Name":"DISPLAY"
     },
     {
@@ -212,13 +213,13 @@
       "Name":"COMPARATOR"
     },
     {
-      "Chips":["INCREMENT REGISTER","2-BIT COUNTER","8-BIT COUNTER","8-BIT COUNTER insta","RANGE-COUNTER flip","4-RING COUNTER","8-RING COUNTER"],
+      "Chips":["INCREMENT REGISTER","2-BIT COUNTER","8-BIT COUNTER","8-BIT COUNTER insta","RANGE-COUNTER flip","4-RING COUNTER","8-RING COUNTER","16-RING COUNTER"],
       "IsToggledOpen":false,
       "Name":"COUNTER"
     },
     {
       "Chips":["8-BIT SHIFT","8-BIT SHIFT 8in"],
-      "IsToggledOpen":true,
+      "IsToggledOpen":false,
       "Name":"MULTIPLIER"
     },
     {

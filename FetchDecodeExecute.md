@@ -15,6 +15,7 @@
 - ~~2x4,8 demux~~
 - ~~edit ALU (return all registers + enables)~~
 - ~~fix comparator~~
+- ~~16 ring counter~~
 
 - ROM loading routine
 - ~~SHT negative~~
