@@ -818,7 +818,7 @@
         "x":24.86,
         "y":-15.9375
       },
-      "OutputPinColourInfo":[{"PinColour":0,"PinID":1390198913},{"PinColour":0,"PinID":454574443}],
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":1527881002},{"PinColour":0,"PinID":1390198913},{"PinColour":0,"PinID":861922456},{"PinColour":0,"PinID":454574443},{"PinColour":0,"PinID":1011558221},{"PinColour":0,"PinID":1533142201},{"PinColour":0,"PinID":140757418},{"PinColour":0,"PinID":1569503198}],
       "InternalData":null
     },
     {
@@ -976,7 +976,7 @@
       "InternalData":null
     },
     {
-      "Name":"8-BIT SHIFT",
+      "Name":"8-BIT SHIFT 8in",
       "ID":745201951,
       "Label":"",
       "Position":{

@@ -17,7 +17,9 @@
 - ~~fix comparator~~
 
 - ROM loading routine
-- ?SHT negative
+- ~~SHT negative~~
+
+- update -
 ---
 ---
 
