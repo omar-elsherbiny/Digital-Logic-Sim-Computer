@@ -84,7 +84,12 @@ Opcode -> 4 bits
 Operand -> 8 bits (Data, Address)
 
 ### Special
-`0,3`-> NOP, STA
+`0`-> NOP
+
+`3`-> STA
+```
+MAR <- CIR_Operand
+```
 
 `4,5,6`-> jumps
 ```
@@ -287,14 +292,17 @@ MAR *-> |     | \3-> MDR
     store CIR<-RAM, !CIR/MDR
     pulse CIR
 4/2 - DECODE:
-    0:
+    1,7,8,10,12,13,14,15:
         store MAR<-CIR, !PC-CIR
         pulse MAR
         store MDR<-RAM, CIR/MDR, CIR-RAM, !(CIR-RAM)-ACC
         pulse MDR
-    1:
-        store MDR<-CIR, PC-CIR, !CIR-RAM, !(CIR-RAM)-ACC
+    2,4,5,6,9,11:
+        store MDR<-CIR, !CIR-RAM, !(CIR-RAM)-ACC
         pulse MDR
+    3:
+        store MAR<-CIR, !PC-CIR
+        pulse MAR
 2 - EXECUTE:
     store x<-ALU
     pulse x
