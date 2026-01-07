@@ -64,8 +64,8 @@
       "Name":"OPERAND",
       "ID":1599015508,
       "Position":{
-        "x":20.875,
-        "y":0.6875
+        "x":14.75,
+        "y":-1.5625
       },
       "BitCount":8,
       "Colour":0,
@@ -75,8 +75,8 @@
       "Name":"OPCODE",
       "ID":1867122275,
       "Position":{
-        "x":20.875,
-        "y":-0.125
+        "x":14.75,
+        "y":-2.25
       },
       "BitCount":4,
       "Colour":0,
@@ -1604,31 +1604,31 @@
     },
     {
       "SourcePinAddress":{
-        "PinID":1721015443,
-        "PinOwnerID":1436168421
-      },
-      "TargetPinAddress":{
-        "PinID":0,
-        "PinOwnerID":1867122275
-      },
-      "ConnectionType":1,
-      "ConnectedWireIndex":27,
-      "ConnectedWireSegmentIndex":0,
-      "Points":[{"x":17.0625,"y":-0.125},{"x":0.0,"y":0.0}]
-    },
-    {
-      "SourcePinAddress":{
         "PinID":719972085,
-        "PinOwnerID":94503601
+        "PinOwnerID":3227143
       },
       "TargetPinAddress":{
         "PinID":0,
         "PinOwnerID":1599015508
       },
       "ConnectionType":1,
-      "ConnectedWireIndex":52,
-      "ConnectedWireSegmentIndex":1,
-      "Points":[{"x":18.375,"y":0.6875},{"x":0.0,"y":0.0}]
+      "ConnectedWireIndex":3,
+      "ConnectedWireSegmentIndex":0,
+      "Points":[{"x":12.9375,"y":1.5625},{"x":12.9375,"y":-1.5625},{"x":0.0,"y":0.0}]
+    },
+    {
+      "SourcePinAddress":{
+        "PinID":1118103570,
+        "PinOwnerID":1444881878
+      },
+      "TargetPinAddress":{
+        "PinID":0,
+        "PinOwnerID":1867122275
+      },
+      "ConnectionType":1,
+      "ConnectedWireIndex":4,
+      "ConnectedWireSegmentIndex":2,
+      "Points":[{"x":12.5,"y":0.5625},{"x":12.5,"y":-2.25},{"x":0.0,"y":0.0}]
     }
   ],
   "Displays":[]
