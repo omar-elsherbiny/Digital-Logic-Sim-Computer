@@ -22,6 +22,7 @@
 - ROM loading routine / ROM_RAM
 - update -
 - write proper script
+- organise core
 ---
 ---
 

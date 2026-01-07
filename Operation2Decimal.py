@@ -1,7 +1,9 @@
-operations=[]
-opcode=0
-while opcode!=-1:
-    opcode,operand=int(input('opcode: ')), int(input('operand: '))
-    operations.append(opcode*256+operand)
+operations = []
+while 1:
+    opcode = int(input("opcode: "))
+    if opcode == -1:
+        break
+    operand = int(input("operand: "))
+    operations.append(str(opcode * 256 + operand))
 
-print('\n'.join(list(map(str,operations))))
+print("\n".join(operations))
