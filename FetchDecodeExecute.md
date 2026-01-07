@@ -6,7 +6,7 @@
 | [Decode](#decode) |
 | [Execute](#execute) |
 | [Connections](#connections) |
-| [Cycle](#cylce) |
+| [Cycle](#cycle) |
 
 ---
 # *TODO*
@@ -126,8 +126,7 @@ ACC <- MDR
 ### 3-STA
 ```
 MAR <- CIR_Operand
-MDR <- ACC
-RAM[MAR]_Operand <- MDR
+RAM[MAR]_Operand <- ACC
 ```
 
 ### 4-JMP
@@ -283,18 +282,18 @@ MAR *-> |     | \3-> MDR
 ```
 10 tick cycle:
 4 - FETCH:
-    store MAR<-PC
-    pulse MAR
-    store CIR<-RAM
+    store MAR<-PC, PC-CIR
+    pulse MAR, pulse PC
+    store CIR<-RAM, !CIR/MDR
     pulse CIR
 4/2 - DECODE:
     0:
-        store MAR<-CIR
+        store MAR<-CIR, !PC-CIR
         pulse MAR
-        store MDR<-RAM
+        store MDR<-RAM, CIR/MDR, CIR-RAM, !(CIR-RAM)-ACC
         pulse MDR
     1:
-        store MDR<-CIR
+        store MDR<-CIR, PC-CIR, !CIR-RAM, !(CIR-RAM)-ACC
         pulse MDR
 2 - EXECUTE:
     store x<-ALU
