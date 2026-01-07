@@ -249,14 +249,12 @@ CIR_Operand  2->/ |     |
 
 ### MDR
 ```
-CIR_Operand 1->\ | MDR | 
-        RAM 2->| |     | 4-> ALU
-        ACC 3->/ |     | 
+CIR_Operand 1->\ | MDR | 3-> ALU
+        RAM 2->/ |     | 
 
 1. 1,7,8,10,12,13,14,15 - EXECUTE
 2. 2,4,5,6,9,11 - EXECUTE
-3. 3 - EXECUTE
-4. * - EXECUTE
+3. * - EXECUTE
 ```
 
 ### ACC
@@ -296,15 +294,15 @@ MAR *-> |     | \3-> MDR
     pulse CIR
 4/2 - DECODE:
     1,7,8,10,12,13,14,15:
-        store MAR<-CIR, !PC-CIR
+        store MAR<-CIR, !PC-CIR, !MAR/MDR
         pulse MAR
-        store MDR<-RAM, CIR/MDR, CIR-RAM, !(CIR-RAM)-ACC
+        store MDR<-RAM, CIR/MDR, CIR-RAM
         pulse MDR
     2,4,5,6,9,11:
-        store MDR<-CIR, !CIR-RAM, !(CIR-RAM)-ACC
+        store MDR<-CIR, MAR/MDR, !CIR-RAM
         pulse MDR
     3:
-        store MAR<-CIR, !PC-CIR
+        store MAR<-CIR, !PC-CIR, !MAR/MDR
         pulse MAR
 2 - EXECUTE:
     store x<-ALU
@@ -312,8 +310,13 @@ MAR *-> |     | \3-> MDR
 ```
 
 ### Buses
-MAR store
+```
+store MAR
 pulse MAR
 
-MDR store
+store MDR
 pulse MDR
+
+store EXECUTE
+pulse EXECUTE
+```
