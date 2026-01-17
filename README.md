@@ -8,7 +8,8 @@
 ## Demo
 
 <p align="center">
-  <img src="./assets/FibDemo.gif" alt="Demo">
+  <video src="./assets/FibDemo.mp4" controls="controls" autoplay="autoplay" loop="loop" muted="muted" style="max-width:100%;">
+  </video>
 </p>
 
 *Program to calculate Fibonacci of 7 shown in GIF:*
