@@ -24,18 +24,27 @@
 % Code blocks
 % -------------------------------------------------
 \usepackage{listings}
+\usepackage{xcolor}
 \lstset{
   basicstyle=\ttfamily\small,
   columns=fullflexible,
   keepspaces=true,
   frame=single,
-  breaklines=true
+  backgroundcolor=\color{gray!10},
+  breaklines=true,
+  xleftmargin=0.5em,
+  xrightmargin=0.5em
 }
 
 % -------------------------------------------------
 % Hyperlinks
 % -------------------------------------------------
 \usepackage[hidelinks]{hyperref}
+
+% -------------------------------------------------
+% Strikeout for TODOs
+% -------------------------------------------------
+\usepackage[normalem]{ulem}
 
 % -------------------------------------------------
 % Document
@@ -49,7 +58,7 @@
 \vspace{1em}
 
 % -------------------------------------------------
-% Table of Contents (manual, matching original)
+% Table of Contents (wide, clickable)
 % -------------------------------------------------
 \begin{center}
 \begin{tabular}{c}
@@ -123,17 +132,19 @@ XOR & 15 & Xor ACC $\oplus=$ RAM \\
 
 \subsubsection*{Unused}
 
+\begin{center}
 \begin{tabular}{ccc}
 \toprule
 Mnemonic & Opcode & Details \\
 \midrule
-NOT & -- & Not ACC = $\sim$ACC \\
-MUL & -- & Multiply ACC *= RAM \\
-INC & -- & Increment ACC++ \\
-DEC & -- & Decrement ACC-- \\
+NOT & -- & ACC = $\sim$ACC \\
+MUL & -- & ACC *= RAM \\
+INC & -- & ACC++ \\
+DEC & -- & ACC-- \\
 JZR & -- & Jump if Z FLAG \\
 \bottomrule
 \end{tabular}
+\end{center}
 
 % =================================================
 \section{Fetch}
@@ -150,25 +161,25 @@ PC <- PC + 1
 \section{Decode}
 \label{sec:decode}
 
-Opcode $\rightarrow$ 4 bits
+Opcode -> 4 bits
 
-Operand $\rightarrow$ 8 bits (Data, Address)
+Operand -> 8 bits (Data/Address)
 
 \subsubsection*{Special}
 
-\texttt{0} $\rightarrow$ NOP
+\texttt{0} -> NOP
 
-\texttt{3} $\rightarrow$ STA
+\texttt{3} -> STA
 \begin{lstlisting}
 MAR <- CIR_Operand
 \end{lstlisting}
 
-\texttt{4,5,6} $\rightarrow$ jumps
+\texttt{4,5,6} -> jumps
 \begin{lstlisting}
 MDR <- CIR_Operand
 \end{lstlisting}
 
-\subsubsection*{ACC / FLAGS $\leftarrow x$}
+\subsubsection*{ACC / FLAGS Fetch}
 
 \texttt{1,7,8,10,12,13,14,15}
 \begin{lstlisting}
@@ -185,8 +196,13 @@ MDR <- CIR_Operand
 \section{Execute}
 \label{sec:execute}
 
+% -----------------------------
+% Two-column Execute minipages
+% -----------------------------
+\begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{0 -- NOP}
 \begin{lstlisting}
+-- No Operation --
 \end{lstlisting}
 
 \subsubsection*{1 -- LDA}
@@ -220,7 +236,9 @@ MDR <- CIR_Operand
 if E:
     PC <- MDR
 \end{lstlisting}
-
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{6 -- JGT}
 \begin{lstlisting}
 MDR <- CIR_Operand
@@ -260,7 +278,11 @@ ACC <- ACC - MDR
 MDR <- CIR_Operand
 ACC <- ACC - MDR
 \end{lstlisting}
+\end{minipage}
 
+\vspace{1em}
+
+\begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{12 -- SHF}
 \begin{lstlisting}
 MAR <- CIR_Operand
@@ -274,7 +296,9 @@ MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC & MDR
 \end{lstlisting}
-
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{14 -- ORR}
 \begin{lstlisting}
 MAR <- CIR_Operand
@@ -288,51 +312,54 @@ MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC ^ MDR
 \end{lstlisting}
+\end{minipage}
 
 % =================================================
 \section{Connections}
 \label{sec:connections}
 
-(All connection diagrams preserved verbatim as logic descriptions.)
-
-\subsection*{PC}
+\begin{minipage}[t]{0.48\linewidth}
+\subsubsection*{PC}
 \begin{lstlisting}
 ALU 1-> | PC | *-> MAR
 \end{lstlisting}
 
-\subsection*{CIR}
+\subsubsection*{CIR}
 \begin{lstlisting}
 RAM 1-> | CIR_Operand | /2-> MAR
         |             | \3-> MDR
 \end{lstlisting}
 
-\subsection*{MAR}
+\subsubsection*{MAR}
 \begin{lstlisting}
 PC 1->\ | MAR | *-> RAM[]
 CIR 2->/
 \end{lstlisting}
-
-\subsection*{MDR}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\subsubsection*{MDR}
 \begin{lstlisting}
 CIR 1->\ | MDR | 3-> ALU
 RAM 2->/
 \end{lstlisting}
 
-\subsection*{ACC}
+\subsubsection*{ACC}
 \begin{lstlisting}
 ALU 1-> | ACC | 2-> MDR
 \end{lstlisting}
 
-\subsection*{FLAG}
+\subsubsection*{FLAG}
 \begin{lstlisting}
 ALU 1*-> | FLAG | 2*-> ALU
 \end{lstlisting}
 
-\subsection*{RAM}
+\subsubsection*{RAM}
 \begin{lstlisting}
 ALU 1-> | RAM | /2-> CIR
 MAR *-> |     | \3-> MDR
 \end{lstlisting}
+\end{minipage}
 
 % =================================================
 \section{Cycle}
