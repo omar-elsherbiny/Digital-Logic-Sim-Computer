@@ -12,8 +12,9 @@
 </p>
 
 *Program to calculate Fibonacci of 7 shown in GIF:*
+<small>
 
-```txt
+<pre>
 00: LDI 1     (513)
 01: STA 244   (1012)
 02: LDI 1     (513)
@@ -35,7 +36,8 @@
 18: JGT 20    (1556)
 19: JMP 6     (1030)
 20: LDA 245   (501)
-```
+</pre>
+</small>
 
 ## Operations
 | Mnemonic | Opcode | Details |
