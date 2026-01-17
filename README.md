@@ -8,16 +8,33 @@
 ## Demo
 
 <p align="center">
-  ![Demo](./assets/demo.gif)
+  <img src="./assets/FibDemo.gif" alt="Demo">
 </p>
 
-*Program shown in GIF:*
+*Program to calculate Fibonacci of 7 shown in GIF:*
 
 ```txt
-LOAD A, 0x05
-ADD A, 0x03
-STORE A, 0x10
-HALT
+00: LDI 1     (513)
+01: STA 244   (1012)
+02: LDI 1     (513)
+03: STA 245   (1013)
+04: LDI 2     (514)
+05: STA 247   (1015)
+06: LDA 244   (500)
+07: ADD 245   (2293)
+08: STA 246   (1014)
+09: LDA 245   (501)
+10: STA 244   (1012)
+11: LDA 246   (502)
+12: STA 245   (1013)
+13: LDA 247   (503)
+14: ADI 1     (2305)
+15: NOP 6     (6)
+16: CMP 15    (1807)
+17: STA 247   (1015)
+18: JGT 20    (1556)
+19: JMP 6     (1030)
+20: LDA 245   (501)
 ```
 
 ## Operations
@@ -41,12 +58,18 @@ HALT
 | XOR | 15 | Xor ACC ^= RAM |
 
 ## Python Helper
-Helper script to convert from the Assembly-like language to the decimal ROM program
+Helper script to convert from the Assembly-like language to the decimal ROM codes
 *Example Program:*
 ```
+LDA 200
+ADI 1  
+STA 200
 ```
 *Example Output program.txt*
 ```
+456
+2305
+968
 ```
 
 ## Files
