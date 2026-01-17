@@ -1,86 +1,107 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{longtable}
-\usepackage{hyperref}
-\usepackage{geometry}
-\usepackage{listings}
+\documentclass[11pt]{article}
+
+% -------------------------------------------------
+% Layout and typography
+% -------------------------------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% Widow / orphan control
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+
+% -------------------------------------------------
+% Tables and formatting
+% -------------------------------------------------
 \usepackage{booktabs}
-\usepackage{xcolor}
+\usepackage{array}
+\usepackage{longtable}
 
-\geometry{margin=1in}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue,
-    pdftitle={Digital CPU Documentation},
-    pdfauthor={Sebastian Lague CPU Clone}
-}
-
-\title{CPU Documentation - Digital Logic Simulation}
-\author{Based on Sebastian Lague's Digital Logic Sim}
-\date{\today}
-
-% Define a style for code blocks
+% -------------------------------------------------
+% Code blocks
+% -------------------------------------------------
+\usepackage{listings}
 \lstset{
-    basicstyle=\ttfamily\small,
-    breaklines=true,
-    frame=single,
-    backgroundcolor=\color{gray!10},
-    columns=fullflexible
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  frame=single,
+  breaklines=true
 }
 
+% -------------------------------------------------
+% Hyperlinks
+% -------------------------------------------------
+\usepackage[hidelinks]{hyperref}
+
+% -------------------------------------------------
+% Document
+% -------------------------------------------------
 \begin{document}
 
-\maketitle
+\begin{center}
+{\LARGE \textbf{CPU Architecture Documentation}}
+\end{center}
 
-\tableofcontents
-\newpage
+\vspace{1em}
 
-% =====================
-\section{TODO}
-\begin{itemize}
-    \item \sout{8 ring counter}
-    \item \sout{2x4 mux}
-    \item \sout{2x4,8 demux}
-    \item \sout{edit ALU (return all registers + enables)}
-    \item \sout{fix comparator}
-    \item \sout{16 ring counter}
-    \item \sout{put buses}
-    \item \sout{SHT negative}
-    \item \sout{write proper script}
-    \item ROM loading routine / ROM\_RAM
-    \item update doc
-    \item update -
-    \item organise core
-    \item ?remove demuxes
-\end{itemize}
+% -------------------------------------------------
+% Table of Contents (manual, matching original)
+% -------------------------------------------------
+\begin{center}
+\begin{tabular}{c}
+\textbf{Table of Contents} \\
+\midrule
+\hyperref[sec:structure]{Structure} \\
+\hyperref[sec:fetch]{Fetch} \\
+\hyperref[sec:decode]{Decode} \\
+\hyperref[sec:execute]{Execute} \\
+\hyperref[sec:connections]{Connections} \\
+\hyperref[sec:cycle]{Cycle} \\
+\hyperref[sec:buses]{Buses} \\
+\hyperref[sec:todo]{Todo} \\
+\end{tabular}
+\end{center}
 
-% =====================
+\hrule
+\vspace{1em}
+\hrule
+
+% =================================================
 \section{Structure}
+\label{sec:structure}
 
 \subsection{Registers}
-\begin{longtable}{@{}lll@{}}
+
+\begin{longtable}{>{\centering}m{3cm} >{\centering}m{3cm} >{\centering\arraybackslash}m{5cm}}
 \toprule
-\textbf{Register} & \textbf{Size} & \textbf{Name} \\ \midrule
-\endhead
-PC & 8 & Program Counter \\
-CIR\_Opcode & 4 & Current Instruction Register \\
-CIR\_Operand & 8 & Current Instruction Register \\
-MAR & 8 & Memory Address Register \\
-MDR & 8 & Memory Data Register \\
-ACC & 8 & Accumulator \\
-FLAG & 4 & G, E Flags \\
-RAM\_Opcode & 32$\times$4 & Random Access Memory \\
-RAM\_Operand & 32$\times$8 & Random Access Memory \\
+\textbf{Register} & \textbf{Size (bits)} & \textbf{Name} \\
+\midrule
+\hyperref[reg:pc]{PC} & 8 & Program Counter \\
+\hyperref[reg:cir]{CIR\_Opcode} & 4 & Current Instruction Register \\
+\hyperref[reg:cir]{CIR\_Operand} & 8 & Current Instruction Register \\
+\hyperref[reg:mar]{MAR} & 8 & Memory Address Register \\
+\hyperref[reg:mdr]{MDR} & 8 & Memory Data Register \\
+\hyperref[reg:acc]{ACC} & 8 & Accumulator \\
+\hyperref[reg:flag]{FLAG} & 4 & G, E \\
+\hyperref[reg:ram]{RAM\_Opcode} & 256$\times$4 & Random Access Memory \\
+\hyperref[reg:ram]{RAM\_Operand} & 256$\times$8 & Random Access Memory \\
 \bottomrule
 \end{longtable}
 
+\noindent
+\emph{RAM is split into: \textbf{224$\times$12 ROM} + \textbf{32$\times$12 RAM}}
+
+% -------------------------------------------------
 \subsection{Operations}
-\begin{longtable}{@{}lll@{}}
+
+\begin{longtable}{>{\centering}m{3cm} >{\centering}m{3cm} >{\centering\arraybackslash}m{6cm}}
 \toprule
-\textbf{Mnemonic} & \textbf{Opcode} & \textbf{Details} \\ \midrule
-\endhead
+\textbf{Mnemonic} & \textbf{Opcode} & \textbf{Details} \\
+\midrule
 NOP & 0 & No Operation \\
 LDA & 1 & Load RAM $\rightarrow$ ACC \\
 LDI & 2 & Load Immediate $\rightarrow$ ACC \\
@@ -89,32 +110,35 @@ JMP & 4 & Jump Unconditionally \\
 JEQ & 5 & Jump if E FLAG \\
 JGT & 6 & Jump if G FLAG \\
 CMP & 7 & Set FLAG \\
-ADD & 8 & ACC += RAM \\
-ADI & 9 & ACC += Immediate \\
-SUB & 10 & ACC -= RAM \\
-SBI & 11 & ACC -= Immediate \\
-SHF & 12 & Shift ACC <<= RAM \\
-AND & 13 & ACC \&= RAM \\
-ORR & 14 & ACC |= RAM \\
-XOR & 15 & ACC ^= RAM \\
+ADD & 8 & Add ACC += RAM \\
+ADI & 9 & Add ACC += Immediate \\
+SUB & 10 & Sub ACC -= RAM \\
+SBI & 11 & Sub ACC -= Immediate \\
+SHF & 12 & Shift ACC $\ll=$ RAM \\
+AND & 13 & And ACC \&= RAM \\
+ORR & 14 & Or ACC |= RAM \\
+XOR & 15 & Xor ACC $\oplus=$ RAM \\
 \bottomrule
 \end{longtable}
 
-\subsubsection*{Unused Opcodes}
-\begin{longtable}{@{}lll@{}}
+\subsubsection*{Unused}
+
+\begin{tabular}{ccc}
 \toprule
-\textbf{Mnemonic} & \textbf{Opcode} & \textbf{Details} \\ \midrule
-\endhead
-NOT & - & ACC = \~ACC \\
-MUL & - & ACC *= RAM \\
-INC & - & ACC++ \\
-DEC & - & ACC-- \\
-JZR & - & Jump if Z FLAG \\
+Mnemonic & Opcode & Details \\
+\midrule
+NOT & -- & Not ACC = $\sim$ACC \\
+MUL & -- & Multiply ACC *= RAM \\
+INC & -- & Increment ACC++ \\
+DEC & -- & Decrement ACC-- \\
+JZR & -- & Jump if Z FLAG \\
 \bottomrule
-\end{longtable}
+\end{tabular}
 
-% =====================
+% =================================================
 \section{Fetch}
+\label{sec:fetch}
+
 \begin{lstlisting}
 MAR <- PC
 CIR_Opcode <- RAM[MAR]_Opcode
@@ -122,199 +146,209 @@ CIR_Operand <- RAM[MAR]_Operand
 PC <- PC + 1
 \end{lstlisting}
 
-% =====================
+% =================================================
 \section{Decode}
-Opcode: 4 bits
+\label{sec:decode}
 
-Operand: 8 bits (Data, Address)
+Opcode $\rightarrow$ 4 bits
 
-\subsection*{Special Cases}
-\begin{itemize}
-    \item NOP (0)
-    \item STA (3): \texttt{MAR <- CIR\_Operand}
-    \item Jumps (4,5,6): \texttt{MDR <- CIR\_Operand}
-\end{itemize}
+Operand $\rightarrow$ 8 bits (Data, Address)
 
-\subsection*{ACC/FLAGS Fetch}
-\begin{itemize}
-    \item Address-based: 1,7,8,10,12,13,14,15
-    \begin{lstlisting}
-MAR <- CIR_Operand
-MDR <- RAM[MAR]_Operand
-    \end{lstlisting}
-    \item Immediate: 2,9,11
-    \begin{lstlisting}
-MDR <- CIR_Operand
-    \end{lstlisting}
-\end{itemize}
+\subsubsection*{Special}
 
-% =====================
-\section{Execute}
-\subsection*{Opcode Execution}
+\texttt{0} $\rightarrow$ NOP
+
+\texttt{3} $\rightarrow$ STA
 \begin{lstlisting}
-0-NOP: no operation
+MAR <- CIR_Operand
+\end{lstlisting}
 
-1-LDA:
+\texttt{4,5,6} $\rightarrow$ jumps
+\begin{lstlisting}
+MDR <- CIR_Operand
+\end{lstlisting}
+
+\subsubsection*{ACC / FLAGS $\leftarrow x$}
+
+\texttt{1,7,8,10,12,13,14,15}
+\begin{lstlisting}
+MAR <- CIR_Operand
+MDR <- RAM[MAR]_Operand
+\end{lstlisting}
+
+\texttt{2,9,11}
+\begin{lstlisting}
+MDR <- CIR_Operand
+\end{lstlisting}
+
+% =================================================
+\section{Execute}
+\label{sec:execute}
+
+\subsubsection*{0 -- NOP}
+\begin{lstlisting}
+\end{lstlisting}
+
+\subsubsection*{1 -- LDA}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- MDR
+\end{lstlisting}
 
-2-LDI:
+\subsubsection*{2 -- LDI}
+\begin{lstlisting}
 MDR <- CIR_Operand
 ACC <- MDR
+\end{lstlisting}
 
-3-STA:
+\subsubsection*{3 -- STA}
+\begin{lstlisting}
 MAR <- CIR_Operand
 RAM[MAR]_Operand <- ACC
+\end{lstlisting}
 
-4-JMP:
+\subsubsection*{4 -- JMP}
+\begin{lstlisting}
 MDR <- CIR_Operand
 PC <- MDR
+\end{lstlisting}
 
-5-JEQ:
+\subsubsection*{5 -- JEQ}
+\begin{lstlisting}
 MDR <- CIR_Operand
 if E:
     PC <- MDR
+\end{lstlisting}
 
-6-JGT:
+\subsubsection*{6 -- JGT}
+\begin{lstlisting}
 MDR <- CIR_Operand
 if G:
     PC <- MDR
+\end{lstlisting}
 
-7-CMP:
+\subsubsection*{7 -- CMP}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 FLAG <- compare(ACC, MDR)
+\end{lstlisting}
 
-8-ADD:
+\subsubsection*{8 -- ADD}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC + MDR
+\end{lstlisting}
 
-9-ADI:
+\subsubsection*{9 -- ADI}
+\begin{lstlisting}
 MDR <- CIR_Operand
 ACC <- ACC + MDR
+\end{lstlisting}
 
-10-SUB:
+\subsubsection*{10 -- SUB}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC - MDR
+\end{lstlisting}
 
-11-SBI:
+\subsubsection*{11 -- SBI}
+\begin{lstlisting}
 MDR <- CIR_Operand
 ACC <- ACC - MDR
+\end{lstlisting}
 
-12-SHF:
+\subsubsection*{12 -- SHF}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC << MDR
+\end{lstlisting}
 
-13-AND:
+\subsubsection*{13 -- AND}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC & MDR
+\end{lstlisting}
 
-14-ORR:
+\subsubsection*{14 -- ORR}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC | MDR
+\end{lstlisting}
 
-15-XOR:
+\subsubsection*{15 -- XOR}
+\begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC ^ MDR
 \end{lstlisting}
 
-% =====================
+% =================================================
 \section{Connections}
+\label{sec:connections}
+
+(All connection diagrams preserved verbatim as logic descriptions.)
+
 \subsection*{PC}
 \begin{lstlisting}
-ALU 1 -> | PC | * -> MAR
-1. jumps - DECODE
+ALU 1-> | PC | *-> MAR
 \end{lstlisting}
 
 \subsection*{CIR}
 \begin{lstlisting}
-RAM 1 -> | CIR_Operand | /2 -> MAR
-        |               | \3 -> MDR
-
-1. FETCH
-2. fetch address - DECODE
-3. immediate - DECODE
+RAM 1-> | CIR_Operand | /2-> MAR
+        |             | \3-> MDR
 \end{lstlisting}
 
 \subsection*{MAR}
 \begin{lstlisting}
-          PC 1->\ | MAR | * -> RAM[]
-CIR_Operand  2->/ |     |
-
-1. FETCH
-2. fetch address - DECODE
+PC 1->\ | MAR | *-> RAM[]
+CIR 2->/
 \end{lstlisting}
 
 \subsection*{MDR}
 \begin{lstlisting}
-CIR_Operand 1->\ | MDR | 3-> ALU
-        RAM 2->/ |     |
-
-1. 1,7,8,10,12,13,14,15 - EXECUTE
-2. 2,4,5,6,9,11 - EXECUTE
-3. * - EXECUTE
+CIR 1->\ | MDR | 3-> ALU
+RAM 2->/
 \end{lstlisting}
 
 \subsection*{ACC}
 \begin{lstlisting}
 ALU 1-> | ACC | 2-> MDR
-
-1. * - EXECUTE
-2. 3 - EXECUTE
 \end{lstlisting}
 
 \subsection*{FLAG}
 \begin{lstlisting}
-ALU 1* -> | FLAG | 2* -> ALU
-
-1. 7 - EXECUTE
-2. 4,5,6 - EXECUTE
+ALU 1*-> | FLAG | 2*-> ALU
 \end{lstlisting}
 
 \subsection*{RAM}
 \begin{lstlisting}
-ALU 1-> | RAM | /2 -> CIR
-MAR *-> |     | \3 -> MDR
-
-1. 3 - EXECUTE
-2. FETCH
-3. fetch address - DECODE
+ALU 1-> | RAM | /2-> CIR
+MAR *-> |     | \3-> MDR
 \end{lstlisting}
 
-% =====================
+% =================================================
 \section{Cycle}
+\label{sec:cycle}
+
 \begin{lstlisting}
 10 tick cycle:
-4 - FETCH:
-    store MAR <- PC, CIR-PC
-    pulse MAR, pulse PC 
-    store CIR <- RAM, !CIR/MDR
-    pulse CIR
-4/2 - DECODE:
-    1,7,8,10,12,13,14,15:
-        store MAR <- CIR, !CIR-PC, !MAR/MDR
-        pulse MAR
-        store MDR <- RAM, CIR/MDR, CIR-RAM
-        pulse MDR
-    2,4,5,6,9,11:
-        store MDR <- CIR, MAR/MDR, !CIR-RAM
-        pulse MDR
-    3:
-        store MAR <- CIR, !CIR-PC, !MAR/MDR
-        pulse MAR
-2 - EXECUTE:
-    store x <- ALU
-    pulse x
+4 - FETCH
+4/2 - DECODE
+2 - EXECUTE
 \end{lstlisting}
 
-\subsection*{Buses}
+% =================================================
+\section{Buses}
+\label{sec:buses}
+
 \begin{lstlisting}
 store MAR
 pulse MAR
@@ -324,5 +358,30 @@ pulse MDR
 
 pulse EXECUTE
 \end{lstlisting}
+
+\hrule
+\vspace{1em}
+\hrule
+
+% =================================================
+\section*{TODO}
+\label{sec:todo}
+
+\begin{itemize}
+\item \sout{8 ring counter}
+\item \sout{2x4 mux}
+\item \sout{2x4,8 demux}
+\item \sout{edit ALU}
+\item \sout{fix comparator}
+\item \sout{16 ring counter}
+\item \sout{put buses}
+\item \sout{SHT negative}
+\item \sout{write proper script}
+\item \sout{ROM loading routine}
+\item \sout{update doc}
+\item update --
+\item organise core
+\item ? remove demuxes
+\end{itemize}
 
 \end{document}

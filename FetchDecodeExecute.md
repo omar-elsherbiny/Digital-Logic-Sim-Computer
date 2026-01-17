@@ -1,37 +1,20 @@
 | **Table Of Contents** |
 |:-:|
-| [Todo](#todo) |
 | [Structure](#structure) |
 | [Fetch](#fetch) |
 | [Decode](#decode) |
 | [Execute](#execute) |
 | [Connections](#connections) |
 | [Cycle](#cycle) |
+| [Buses](#buses) |
+| [Todo](#todo) |
 
 ---
-# *TODO*
-- ~~8 ring counter~~
-- ~~2x4 mux~~
-- ~~2x4,8 demux~~
-- ~~edit ALU (return all registers + enables)~~
-- ~~fix comparator~~
-- ~~16 ring counter~~
-- ~~put buses~~
-- ~~SHT negative~~
-- ~~write proper script~~
-- ROM loading routine / ROM_RAM
-- update doc
-- update -
-- organise core
-- ?remove demuxes
 ---
----
-
-
 
 # Structure
 ## Registers
-| Register | Size | Name |
+| Register | Size (bits) | Name |
 |:-:|:-:|:-:|
 | [PC](#pc) | 8 | Program Counter |
 | [CIR_Opcode](#cir) | 4 | Current Instruction Register |
@@ -40,8 +23,10 @@
 | [MDR](#mdr) | 8 | Memory Data Register |
 | [ACC](#acc) | 8 | Accumulator |
 | [FLAG](#flag) | 4 | G, E |
-| [RAM_Opcode](#ram) | 32x4 | Random Access Memory |
-| [RAM_Operand](#ram) | 32x8 | Random Access Memory |
+| [RAM_Opcode](#ram) | 256x4 | Random Access Memory |
+| [RAM_Operand](#ram) | 256x8 | Random Access Memory |
+
+*RAM is split into: **224x12 ROM** + **32x12 RAM***
 
 ## Operations
 | Mnemonic | Opcode | Details |
@@ -309,7 +294,7 @@ MAR *-> |     | \3-> MDR
     pulse x
 ```
 
-### Buses
+# Buses
 ```
 store MAR
 pulse MAR
@@ -319,3 +304,23 @@ pulse MDR
 
 pulse EXECUTE
 ```
+
+---
+---
+# *TODO*
+- ~~8 ring counter~~
+- ~~2x4 mux~~
+- ~~2x4,8 demux~~
+- ~~edit ALU (return all registers + enables)~~
+- ~~fix comparator~~
+- ~~16 ring counter~~
+- ~~put buses~~
+- ~~SHT negative~~
+- ~~write proper script~~
+- ~~ROM loading routine / ROM_RAM~~
+- ~~update doc~~
+- update -
+- organise core
+- ?remove demuxes
+---
+---
