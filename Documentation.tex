@@ -19,6 +19,11 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{ltablex} % long tables with page breaks
+\keepXColumns
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}}
+\setlength{\parskip}{0.5em}
 
 % -------------------------------------------------
 % Code blocks
@@ -47,37 +52,46 @@
 \usepackage[normalem]{ulem}
 
 % -------------------------------------------------
+% Prevent page breaks mid minipages
+% -------------------------------------------------
+\usepackage{needspace}
+
+% -------------------------------------------------
+% Title page
+% -------------------------------------------------
+\usepackage{titling}
+
+\title{\LARGE CPU Architecture Documentation}
+\author{\href{https://github.com/omar-elsherbiny}{sherbodev}}
+\date{January 17, 2026}
+
+% -------------------------------------------------
 % Document
 % -------------------------------------------------
 \begin{document}
 
-\begin{center}
-{\LARGE \textbf{CPU Architecture Documentation}}
-\end{center}
+% -----------------------
+% Title page
+% -----------------------
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge \bfseries CPU Architecture Documentation \par}
+    \vspace{2cm}
+    {\large Made by: \href{https://github.com/omar-elsherbiny}{sherbodev} \par}
+    {\large Date: January 17, 2026 \par}
+    \vspace{1cm}
+    {\small Credits: Inspired by Sebastian Lague's Digital Logic Simulator \par}
+    \vfill
+\end{titlepage}
 
-\vspace{1em}
-
-% -------------------------------------------------
-% Table of Contents (wide, clickable)
-% -------------------------------------------------
-\begin{center}
-\begin{tabular}{c}
-\textbf{Table of Contents} \\
-\midrule
-\hyperref[sec:structure]{Structure} \\
-\hyperref[sec:fetch]{Fetch} \\
-\hyperref[sec:decode]{Decode} \\
-\hyperref[sec:execute]{Execute} \\
-\hyperref[sec:connections]{Connections} \\
-\hyperref[sec:cycle]{Cycle} \\
-\hyperref[sec:buses]{Buses} \\
-\hyperref[sec:todo]{Todo} \\
-\end{tabular}
-\end{center}
-
-\hrule
-\vspace{1em}
-\hrule
+% -----------------------
+% Table of Contents
+% -----------------------
+\clearpage
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
 
 % =================================================
 \section{Structure}
@@ -89,28 +103,40 @@
 \toprule
 \textbf{Register} & \textbf{Size (bits)} & \textbf{Name} \\
 \midrule
-\hyperref[reg:pc]{PC} & 8 & Program Counter \\
-\hyperref[reg:cir]{CIR\_Opcode} & 4 & Current Instruction Register \\
-\hyperref[reg:cir]{CIR\_Operand} & 8 & Current Instruction Register \\
-\hyperref[reg:mar]{MAR} & 8 & Memory Address Register \\
-\hyperref[reg:mdr]{MDR} & 8 & Memory Data Register \\
-\hyperref[reg:acc]{ACC} & 8 & Accumulator \\
-\hyperref[reg:flag]{FLAG} & 4 & G, E \\
-\hyperref[reg:ram]{RAM\_Opcode} & 256$\times$4 & Random Access Memory \\
-\hyperref[reg:ram]{RAM\_Operand} & 256$\times$8 & Random Access Memory \\
+\endfirsthead
+\toprule
+\textbf{Register} & \textbf{Size (bits)} & \textbf{Name} \\
+\midrule
+\endhead
 \bottomrule
+\endfoot
+PC & 8 & Program Counter \\
+CIR\_Opcode & 4 & Current Instruction Register \\
+CIR\_Operand & 8 & Current Instruction Register \\
+MAR & 8 & Memory Address Register \\
+MDR & 8 & Memory Data Register \\
+ACC & 8 & Accumulator \\
+FLAG & 4 & G, E \\
+RAM\_Opcode & 256$\times$4 & Random Access Memory \\
+RAM\_Operand & 256$\times$8 & Random Access Memory \\
 \end{longtable}
 
 \noindent
 \emph{RAM is split into: \textbf{224$\times$12 ROM} + \textbf{32$\times$12 RAM}}
 
-% -------------------------------------------------
 \subsection{Operations}
 
 \begin{longtable}{>{\centering}m{3cm} >{\centering}m{3cm} >{\centering\arraybackslash}m{6cm}}
 \toprule
 \textbf{Mnemonic} & \textbf{Opcode} & \textbf{Details} \\
 \midrule
+\endfirsthead
+\toprule
+\textbf{Mnemonic} & \textbf{Opcode} & \textbf{Details} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
 NOP & 0 & No Operation \\
 LDA & 1 & Load RAM $\rightarrow$ ACC \\
 LDI & 2 & Load Immediate $\rightarrow$ ACC \\
@@ -127,24 +153,9 @@ SHF & 12 & Shift ACC $\ll=$ RAM \\
 AND & 13 & And ACC \&= RAM \\
 ORR & 14 & Or ACC |= RAM \\
 XOR & 15 & Xor ACC $\oplus=$ RAM \\
-\bottomrule
 \end{longtable}
 
-\subsubsection*{Unused}
-
-\begin{center}
-\begin{tabular}{ccc}
-\toprule
-Mnemonic & Opcode & Details \\
-\midrule
-NOT & -- & ACC = $\sim$ACC \\
-MUL & -- & ACC *= RAM \\
-INC & -- & ACC++ \\
-DEC & -- & ACC-- \\
-JZR & -- & Jump if Z FLAG \\
-\bottomrule
-\end{tabular}
-\end{center}
+\clearpage
 
 % =================================================
 \section{Fetch}
@@ -160,15 +171,14 @@ PC <- PC + 1
 % =================================================
 \section{Decode}
 \label{sec:decode}
-
-Opcode -> 4 bits
-
+\noindent
+Opcode -> 4 bits \\
 Operand -> 8 bits (Data/Address)
 
-\subsubsection*{Special}
+\subsubsection*{Special Cases}
 
-\texttt{0} -> NOP
-
+\noindent
+\texttt{0} -> NOP \\
 \texttt{3} -> STA
 \begin{lstlisting}
 MAR <- CIR_Operand
@@ -179,15 +189,15 @@ MAR <- CIR_Operand
 MDR <- CIR_Operand
 \end{lstlisting}
 
-\subsubsection*{ACC / FLAGS Fetch}
+\subsubsection*{ACC/FLAGS <- x}
 
-\texttt{1,7,8,10,12,13,14,15}
+\texttt{1,7,8,10,12,13,14,15} (fetch address)
 \begin{lstlisting}
 MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 \end{lstlisting}
 
-\texttt{2,9,11}
+\texttt{2,9,11} (Immediate)
 \begin{lstlisting}
 MDR <- CIR_Operand
 \end{lstlisting}
@@ -196,9 +206,6 @@ MDR <- CIR_Operand
 \section{Execute}
 \label{sec:execute}
 
-% -----------------------------
-% Two-column Execute minipages
-% -----------------------------
 \begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{0 -- NOP}
 \begin{lstlisting}
@@ -236,9 +243,7 @@ MDR <- CIR_Operand
 if E:
     PC <- MDR
 \end{lstlisting}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.48\linewidth}
+
 \subsubsection*{6 -- JGT}
 \begin{lstlisting}
 MDR <- CIR_Operand
@@ -253,6 +258,9 @@ MDR <- RAM[MAR]_Operand
 FLAG <- compare(ACC, MDR)
 \end{lstlisting}
 
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{8 -- ADD}
 \begin{lstlisting}
 MAR <- CIR_Operand
@@ -278,11 +286,7 @@ ACC <- ACC - MDR
 MDR <- CIR_Operand
 ACC <- ACC - MDR
 \end{lstlisting}
-\end{minipage}
 
-\vspace{1em}
-
-\begin{minipage}[t]{0.48\linewidth}
 \subsubsection*{12 -- SHF}
 \begin{lstlisting}
 MAR <- CIR_Operand
@@ -296,9 +300,7 @@ MAR <- CIR_Operand
 MDR <- RAM[MAR]_Operand
 ACC <- ACC & MDR
 \end{lstlisting}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.48\linewidth}
+
 \subsubsection*{14 -- ORR}
 \begin{lstlisting}
 MAR <- CIR_Operand
@@ -385,30 +387,5 @@ pulse MDR
 
 pulse EXECUTE
 \end{lstlisting}
-
-\hrule
-\vspace{1em}
-\hrule
-
-% =================================================
-\section*{TODO}
-\label{sec:todo}
-
-\begin{itemize}
-\item \sout{8 ring counter}
-\item \sout{2x4 mux}
-\item \sout{2x4,8 demux}
-\item \sout{edit ALU}
-\item \sout{fix comparator}
-\item \sout{16 ring counter}
-\item \sout{put buses}
-\item \sout{SHT negative}
-\item \sout{write proper script}
-\item \sout{ROM loading routine}
-\item \sout{update doc}
-\item update --
-\item organise core
-\item ? remove demuxes
-\end{itemize}
 
 \end{document}
