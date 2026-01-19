@@ -40,7 +40,7 @@
 </pre>
 </small>
 
-## Operations
+## Instruction Set
 | Mnemonic | Opcode | Details |
 |:-:|:-:|:-:|
 | NOP | 0 | No Operation |
