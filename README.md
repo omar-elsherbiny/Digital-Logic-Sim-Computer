@@ -83,5 +83,19 @@ Operation2Decimal.py # Python helper script
 program.txt          # Example program
 ```
 
+## Running
+Make sure you have Digital Logic Sim installed
+
+Create a new project or add to a previous project and get its location e.g.
+
+`%APPDATA%\SebastianLague\Digital-Logic-Sim\Projects\MyProject\`
+
+Copy all files in `Chips/` folder into the appdata `Chips/` folder
+
+After scripting your program using the python helper, copy the decimal codes in `program.txt` and paste it in the ROM chip inside the sim
+
+now open the `CPU core` and press `Enable`!
+
+
 ## Credits
 Inspired by [Sebastian Lague’s Digital Logic Sim](https://www.youtube.com/playlist?list=PLFt_AvWsXl0dPhqVsKt1Ni_46ARyiCGSq)
