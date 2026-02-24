@@ -189,7 +189,7 @@
       "Label":"",
       "Position":{
         "x":3.26,
-        "y":-11.5
+        "y":-12.8125
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":1601124414},{"PinColour":0,"PinID":1314550242},{"PinColour":0,"PinID":382964184},{"PinColour":0,"PinID":420839447}],
       "InternalData":null
@@ -200,7 +200,7 @@
       "Label":"",
       "Position":{
         "x":3.26,
-        "y":-13.0625
+        "y":-14.375
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":1422030242},{"PinColour":0,"PinID":640112071},{"PinColour":0,"PinID":1561193728},{"PinColour":0,"PinID":295235304},{"PinColour":0,"PinID":1062169370},{"PinColour":0,"PinID":288925687},{"PinColour":0,"PinID":1553372007},{"PinColour":0,"PinID":846878245}],
       "InternalData":null
@@ -222,7 +222,7 @@
       "Label":"",
       "Position":{
         "x":6.26,
-        "y":-11.5
+        "y":-12.8125
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":250330468},{"PinColour":0,"PinID":522218627}],
       "InternalData":null
@@ -255,7 +255,7 @@
       "Label":"",
       "Position":{
         "x":6.26,
-        "y":-13.0625
+        "y":-14.375
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":472251757},{"PinColour":0,"PinID":1184283879},{"PinColour":0,"PinID":1782641549}],
       "InternalData":null
@@ -783,7 +783,7 @@
       "Label":"",
       "Position":{
         "x":3.26,
-        "y":-16.125
+        "y":-17.4375
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":708927179},{"PinColour":0,"PinID":544832910},{"PinColour":0,"PinID":1231304623},{"PinColour":0,"PinID":1152588475},{"PinColour":0,"PinID":984224719},{"PinColour":0,"PinID":2026401420},{"PinColour":0,"PinID":1201351053},{"PinColour":0,"PinID":59897903},{"PinColour":0,"PinID":227141863},{"PinColour":0,"PinID":278263247},{"PinColour":0,"PinID":289208761},{"PinColour":0,"PinID":1465636559},{"PinColour":0,"PinID":1368672346},{"PinColour":0,"PinID":260614716},{"PinColour":0,"PinID":675639031},{"PinColour":0,"PinID":396884107}],
       "InternalData":null
@@ -794,7 +794,7 @@
       "Label":"",
       "Position":{
         "x":3.1475,
-        "y":-10.25
+        "y":-11.5625
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":921404202}],
       "InternalData":null
@@ -805,7 +805,7 @@
       "Label":"",
       "Position":{
         "x":6.26,
-        "y":-16.125
+        "y":-17.4375
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":1232512888},{"PinColour":0,"PinID":235874789},{"PinColour":0,"PinID":669678628},{"PinColour":0,"PinID":1295533864}],
       "InternalData":null
@@ -815,8 +815,8 @@
       "ID":94533472,
       "Label":"",
       "Position":{
-        "x":24.86,
-        "y":-15.9375
+        "x":21.235,
+        "y":-17.25
       },
       "OutputPinColourInfo":[{"PinColour":0,"PinID":1527881002},{"PinColour":0,"PinID":1390198913},{"PinColour":0,"PinID":861922456},{"PinColour":0,"PinID":454574443},{"PinColour":0,"PinID":1011558221},{"PinColour":0,"PinID":1533142201},{"PinColour":0,"PinID":140757418},{"PinColour":0,"PinID":1569503198}],
       "InternalData":null
@@ -995,6 +995,72 @@
         "y":-3.4375
       },
       "OutputPinColourInfo":[],
+      "InternalData":null
+    },
+    {
+      "Name":"NAND",
+      "ID":1352473822,
+      "Label":"",
+      "Position":{
+        "x":-3.25,
+        "y":-2.4375
+      },
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":2}],
+      "InternalData":null
+    },
+    {
+      "Name":"2x4 MUX",
+      "ID":1049701862,
+      "Label":"",
+      "Position":{
+        "x":3.1475,
+        "y":-10.25
+      },
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":144120207}],
+      "InternalData":null
+    },
+    {
+      "Name":"4x2 DEMUX",
+      "ID":1622743756,
+      "Label":"",
+      "Position":{
+        "x":6.1475,
+        "y":-10.1875
+      },
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":1163990715},{"PinColour":0,"PinID":1303244230}],
+      "InternalData":null
+    },
+    {
+      "Name":"8x2 DEMUX",
+      "ID":2101751975,
+      "Label":"",
+      "Position":{
+        "x":6.1475,
+        "y":-11.6875
+      },
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":1595119299},{"PinColour":0,"PinID":719972085}],
+      "InternalData":null
+    },
+    {
+      "Name":"8-RING COUNTER",
+      "ID":724847589,
+      "Label":"",
+      "Position":{
+        "x":26.86,
+        "y":-11.0
+      },
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":2052635914},{"PinColour":0,"PinID":804683951},{"PinColour":0,"PinID":26154506},{"PinColour":0,"PinID":326256068},{"PinColour":0,"PinID":1274939903},{"PinColour":0,"PinID":43003896},{"PinColour":0,"PinID":1572035549},{"PinColour":0,"PinID":1848290043}],
+      "InternalData":null
+    },
+    {
+      "Name":"16-RING COUNTER",
+      "ID":27408294,
+      "Label":"",
+      "Position":{
+        "x":26.86,
+        "y":-14.125
+      },
+      "OutputPinColourInfo":[{"PinColour":0,"PinID":760929997},{"PinColour":0,"PinID":2061181595},{"PinColour":0,"PinID":1741059838},{"PinColour":0,"PinID":1367440246},{"PinColour":0,"PinID":335922127},{"PinColour":0,"PinID":1129163671},{"PinColour":0,"PinID":554419379},{"PinColour":0,"PinID":114277225},{"PinColour":0,"PinID":2052635914},{"PinColour":0,"PinID":804683951},{"PinColour":0,"PinID":26154506},{"PinColour":0,"PinID":326256068},{"PinColour":0,"PinID":1274939903},{"PinColour":0,"PinID":43003896},{"PinColour":0,"PinID":1572035549},{"PinColour":0,"PinID":1848290043}],
       "InternalData":null
     }
   ],

@@ -12,6 +12,9 @@
   </video>
 </p>
 
+![](./assets/Layout.png)
+![](./assets/AllChips.png)
+
 *Program to calculate Fibonacci of 7 shown in GIF:*
 <small>
 
